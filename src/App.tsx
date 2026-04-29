@@ -36,15 +36,15 @@ function App() {
   const showRecent = recentServices.length > 0 && !query && category === "All";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen w-screen overflow-x-hidden bg-background">
       <DashboardHeader query={query} onQueryChange={setQuery} />
 
-      <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+      <main className="mx-auto max-w-6xl px-3 py-6 sm:px-6 sm:py-8 w-full">
         <section className="mb-6 animate-[fade-in_0.4s_ease-out]">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground md:text-3xl">
             Welcome
           </h2>
-          <p className="mt-1.5 max-w-2xl text-sm text-muted-foreground sm:text-base">
+          <p className="mt-1.5 max-w-2xl text-xs sm:text-sm text-muted-foreground md:text-base">
             Your single access point for the Ministry of Finance and Development
             Planning's digital services.
           </p>
@@ -98,8 +98,8 @@ function App() {
         </section>
       </main>
 
-      <footer className="border-t border-border bg-muted/30 py-8 text-center text-sm text-muted-foreground">
-        <div className="mx-auto max-w-6xl px-4">
+      <footer className="border-t border-border bg-muted/30 py-8 text-center text-xs sm:text-sm text-muted-foreground w-full overflow-x-hidden">
+        <div className="mx-auto max-w-6xl px-3 sm:px-6">
           <div className="mb-4 flex justify-center">
             <img src={logoUrl} alt="MFDP Logo" className="h-12 w-12" />
           </div>
