@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SearchX, Clock } from "lucide-react";
 import { DashboardHeader } from "@/components/DashboardHeader";
@@ -6,28 +5,9 @@ import { CategoryFilter } from "@/components/CategoryFilter";
 import { ServiceCard } from "@/components/ServiceCard";
 import { services, type ServiceCategory, type Service } from "@/data/services";
 import { useRecentServices } from "@/hooks/use-recent-services";
+import logoUrl from "@/assets/mfdp-logo.png";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "MFDP Digital Services Dashboard — Republic of Liberia" },
-      {
-        name: "description",
-        content:
-          "Centralized access portal for the Ministry of Finance and Development Planning (MFDP) digital services in Liberia.",
-      },
-      { property: "og:title", content: "MFDP Digital Services Dashboard" },
-      {
-        property: "og:description",
-        content:
-          "Access all MFDP digital services in one place — financial systems, document management, planning tools, and more.",
-      },
-    ],
-  }),
-  component: Dashboard,
-});
-
-function Dashboard() {
+function App() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<"All" | ServiceCategory>("All");
   const { recent, trackVisit } = useRecentServices();
@@ -100,38 +80,37 @@ function Dashboard() {
             <CategoryFilter active={category} onChange={setCategory} />
           </div>
 
-          {filtered.length === 0 ? (
-            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 px-6 py-16 text-center">
-              <SearchX className="h-10 w-10 text-muted-foreground" aria-hidden="true" />
-              <p className="mt-4 text-base font-medium text-foreground">
-                No services found
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Try a different search term or category.
-              </p>
+          {filtered.length > 0 ? (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {filtered.map((s) => (
+                <ServiceCard key={s.id} service={s} onOpen={() => trackVisit(s.id)} />
+              ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((s, i) => (
-                <div
-                  key={s.id}
-                  className="animate-[slide-up_0.4s_ease-out_both]"
-                  style={{ animationDelay: `${i * 40}ms` }}
-                >
-                  <ServiceCard service={s} onOpen={() => trackVisit(s.id)} />
-                </div>
-              ))}
+            <div className="flex min-h-96 flex-col items-center justify-center rounded-lg border border-border bg-muted/50 px-4 py-12 text-center">
+              <SearchX className="mb-3 h-10 w-10 text-muted-foreground" />
+              <h3 className="mb-1 text-lg font-semibold text-foreground">No services found</h3>
+              <p className="text-sm text-muted-foreground">
+                Try adjusting your filters or search query
+              </p>
             </div>
           )}
         </section>
       </main>
 
-      <footer className="mt-12 border-t border-border bg-card/50">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-muted-foreground sm:px-6">
-          © {new Date().getFullYear()} Ministry of Finance and Development Planning,
-          Republic of Liberia. All rights reserved.
+      <footer className="border-t border-border bg-muted/30 py-8 text-center text-sm text-muted-foreground">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mb-4 flex justify-center">
+            <img src={logoUrl} alt="MFDP Logo" className="h-12 w-12" />
+          </div>
+          <p>
+            &copy; {new Date().getFullYear()} Ministry of Finance and Development Planning,
+            Republic of Liberia. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
   );
 }
+
+export default App;
