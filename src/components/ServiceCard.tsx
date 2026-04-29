@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import type { Service } from "@/data/services";
 
 interface ServiceCardProps {
@@ -14,36 +14,39 @@ export function ServiceCard({ service, onOpen }: ServiceCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => onOpen(service)}
-      className="service-card group flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 text-left shadow-[var(--shadow-card)] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      aria-label={`Open ${service.name} in a new tab`}
+      className="service-card group relative flex flex-col rounded-lg border border-border/50 bg-card overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      aria-label={`Open ${service.name}`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-primary-foreground"
-          style={{ background: "var(--gradient-hero)" }}
-        >
-          <Icon className="h-6 w-6" aria-hidden="true" />
+      {/* Background accent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+      {/* Content */}
+      <div className="relative p-3 sm:p-5 flex flex-col h-full">
+        <div className="flex items-start justify-between gap-2 mb-2 sm:mb-3">
+          <div
+            className="flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-lg text-primary-foreground shrink-0 group-hover:scale-110 transition-transform duration-200"
+            style={{ background: "var(--gradient-hero)" }}
+          >
+            <Icon className="h-4 w-4 sm:h-6 sm:w-6" aria-hidden="true" />
+          </div>
+          <span className="rounded-md bg-secondary/60 px-1.5 sm:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] font-semibold uppercase tracking-wide text-secondary-foreground shrink-0">
+            {service.category}
+          </span>
         </div>
-        <span className="rounded-full bg-secondary px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-secondary-foreground">
-          {service.category}
-        </span>
-      </div>
 
-      <div className="flex-1">
-        <h3 className="text-base font-semibold leading-tight text-card-foreground">
+        <h3 className="text-xs sm:text-base font-bold leading-tight text-card-foreground group-hover:text-primary transition-colors mb-1.5 sm:mb-2 flex-1">
           {service.name}
         </h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+        
+        <p className="text-[11px] sm:text-sm text-muted-foreground leading-snug mb-2 sm:mb-3 flex-1">
           {service.description}
         </p>
-      </div>
 
-      <div className="flex items-center justify-between border-t border-border pt-3">
-        <span className="text-sm font-medium text-primary">Open Service</span>
-        <ExternalLink
-          className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
-          aria-hidden="true"
-        />
+        {/* Link action - most prominent */}
+        <div className="flex items-center gap-1.5 text-[10px] sm:text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors pt-2 border-t border-border/30">
+          <span className="uppercase tracking-wide">Access</span>
+          <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+        </div>
       </div>
     </a>
   );
