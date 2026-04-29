@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import logoUrl from "../assets/mfdp-logo.png";
 
 function NotFoundComponent() {
   return (
@@ -29,16 +30,25 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "MFDP Connect Dashboard" },
+      { name: "description", content: "Ministry of Finance and Development Planning - Connect Dashboard for service management and coordination" },
+      { name: "author", content: "MFDP" },
+      { property: "og:title", content: "MFDP Connect Dashboard" },
+      { property: "og:description", content: "Ministry of Finance and Development Planning - Connect Dashboard for service management and coordination" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:image", content: logoUrl },
+      { property: "og:image:type", content: "image/png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "MFDP Connect Dashboard" },
+      { name: "twitter:description", content: "Ministry of Finance and Development Planning - Connect Dashboard for service management and coordination" },
+      { name: "twitter:image", content: logoUrl },
     ],
     links: [
+      {
+        rel: "icon",
+        href: logoUrl,
+        type: "image/png",
+      },
       {
         rel: "stylesheet",
         href: appCss,

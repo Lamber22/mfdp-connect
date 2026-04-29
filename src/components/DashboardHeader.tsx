@@ -21,7 +21,7 @@ export function DashboardHeader({ query, onQueryChange }: DashboardHeaderProps) 
             <img
               src={logo}
               alt="MFDP Republic of Liberia seal"
-              className="h-11 w-11 shrink-0 rounded-full object-contain bg-card ring-1 ring-border shadow-[var(--shadow-card)]"
+              className="h-16 w-16 shrink-0 rounded-full object-contain bg-card ring-1 ring-border shadow-[var(--shadow-card)]"
             />
             <div className="min-w-0">
               <p className="truncate text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
