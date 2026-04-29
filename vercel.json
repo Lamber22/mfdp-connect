@@ -1,10 +1,14 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/public",
+  "functions": {
+    "dist/server/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/dist/server/index.js"
     }
   ]
 }
