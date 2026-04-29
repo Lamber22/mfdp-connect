@@ -1,10 +1,20 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "dist/public",
+  "serverless": {
+    "default": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "functions": {
+    "dist/server/chunks/**": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/dist/server.js"
     }
   ]
 }
