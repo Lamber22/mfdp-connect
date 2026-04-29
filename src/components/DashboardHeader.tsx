@@ -12,8 +12,13 @@ export function DashboardHeader({ query, onQueryChange }: DashboardHeaderProps) 
 
   return (
     <header
-      className="sticky top-0 z-40 border-b border-border/50 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 overflow-x-hidden"
-      style={{ background: "var(--gradient-subtle)" }}
+      className="sticky top-0 z-50 w-full backdrop-blur-md supports-[backdrop-filter]:bg-background/80 overflow-x-hidden"
+      style={{ 
+        background: "var(--gradient-subtle)",
+        position: "sticky",
+        top: 0,
+        willChange: "transform"
+      }}
     >
       <div className="mx-auto max-w-7xl px-3 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center justify-between gap-2 sm:gap-4">

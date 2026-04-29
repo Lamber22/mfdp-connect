@@ -36,10 +36,10 @@ function App() {
   const showRecent = recentServices.length > 0 && !query && category === "All";
 
   return (
-    <div className="min-h-screen w-screen overflow-x-hidden bg-background">
+    <div className="flex flex-col min-h-screen w-full bg-background">
       <DashboardHeader query={query} onQueryChange={setQuery} />
 
-      <main className="mx-auto max-w-7xl px-3 py-6 sm:px-6 sm:py-8 w-full">
+      <main className="flex-1 mx-auto max-w-7xl px-3 py-6 sm:px-6 sm:py-8 w-full overflow-x-hidden">
         {!query && (
           <section className="mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-2">
@@ -54,8 +54,8 @@ function App() {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Sidebar - Filters */}
           {!query && (
-            <aside className="w-full lg:w-64 shrink-0">
-              <div className="sticky top-24 space-y-4">
+            <aside className="w-full lg:w-64 shrink-0 overflow-visible">
+              <div className="sticky top-24 space-y-4 overflow-visible">
                   <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground px-2">
                     Categories
                   </h3>
@@ -116,7 +116,7 @@ function App() {
         </div>
       </main>
 
-      <footer className="border-t border-border bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 mt-12">
+      <footer className="bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 py-8 w-full">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
