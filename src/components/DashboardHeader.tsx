@@ -59,7 +59,7 @@ export function DashboardHeader({ query, onQueryChange }: DashboardHeaderProps) 
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Search services..."
             aria-label="Search services"
-            className="h-10 sm:h-12 w-full rounded-xl border border-border bg-card pl-10 pr-4 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground shadow-[var(--shadow-card)] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-10 sm:h-12 w-full rounded-xl border border-border bg-card pl-10 pr-4 text-base sm:text-sm text-foreground placeholder:text-muted-foreground shadow-[var(--shadow-card)] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
         </div>
       </div>

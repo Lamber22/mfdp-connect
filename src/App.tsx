@@ -40,15 +40,17 @@ function App() {
       <DashboardHeader query={query} onQueryChange={setQuery} />
 
       <main className="mx-auto max-w-6xl px-3 py-6 sm:px-6 sm:py-8 w-full">
-        <section className="mb-6 animate-[fade-in_0.4s_ease-out]">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-            Welcome
-          </h2>
-          <p className="mt-1.5 max-w-2xl text-xs sm:text-sm text-muted-foreground md:text-base">
-            Your single access point for the Ministry of Finance and Development
-            Planning's digital services.
-          </p>
-        </section>
+        {!query && (
+          <section className="mb-6 animate-[fade-in_0.4s_ease-out]">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+              Welcome
+            </h2>
+            <p className="mt-1.5 max-w-2xl text-xs sm:text-sm text-muted-foreground md:text-base">
+              Your single access point for the Ministry of Finance and Development
+              Planning's digital services.
+            </p>
+          </section>
+        )}
 
         {showRecent && (
           <section className="mb-8 animate-[slide-up_0.4s_ease-out]">
@@ -69,16 +71,18 @@ function App() {
         <section>
           <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-              All Services
+              {query ? "Search Results" : "All Services"}
               <span className="ml-2 normal-case tracking-normal text-muted-foreground/70">
                 ({filtered.length})
               </span>
             </h3>
           </div>
 
-          <div className="mb-5">
-            <CategoryFilter active={category} onChange={setCategory} />
-          </div>
+          {!query && (
+            <div className="mb-5">
+              <CategoryFilter active={category} onChange={setCategory} />
+            </div>
+          )}
 
           {filtered.length > 0 ? (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
