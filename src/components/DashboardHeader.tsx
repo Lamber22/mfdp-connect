@@ -1,5 +1,6 @@
-import { Search, Moon, Sun, Landmark } from "lucide-react";
+import { Search, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
+import logo from "@/assets/mfdp-logo.png";
 
 interface DashboardHeaderProps {
   query: string;
@@ -17,13 +18,11 @@ export function DashboardHeader({ query, onQueryChange }: DashboardHeaderProps) 
       <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div
-              className="flex h-10 w-10 items-center justify-center rounded-xl text-primary-foreground shadow-[var(--shadow-card)]"
-              style={{ background: "var(--gradient-hero)" }}
-              aria-hidden="true"
-            >
-              <Landmark className="h-5 w-5" />
-            </div>
+            <img
+              src={logo}
+              alt="MFDP Republic of Liberia seal"
+              className="h-11 w-11 shrink-0 rounded-full object-contain bg-card ring-1 ring-border shadow-[var(--shadow-card)]"
+            />
             <div className="min-w-0">
               <p className="truncate text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                 Republic of Liberia
